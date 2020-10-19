@@ -1,11 +1,11 @@
 const { response } = require('express')
 const express = require('express')
 const app = express()
-const { request } = require('http')
 var topic = require('./lib/topic')
 var author = require('./lib/author')
 
 app.use(express.static('public'));
+app.use(helmet());
 
 app.get('/',(request, response) => topic.home(request,response))
 app.get(`/topic/create`, (request, response) => topic.create(request,response))
